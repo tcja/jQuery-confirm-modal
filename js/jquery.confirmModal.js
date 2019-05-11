@@ -2,7 +2,7 @@
  * jQuery.confirmModal v1.0
  * Copyright (c) 2018 Trim C.
  * Released under the MIT license
- * Description : Easy and simple to use plugin replacing the browser's default confirm box with bootstrap 4 modal
+ * Description : simple to use plugin replacing the browser's default confirm box with bootstrap 4 modal
  */
 (function ($) {
     $currentModalTarget = {};
