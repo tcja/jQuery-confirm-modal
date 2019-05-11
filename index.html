@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<!-- saved from url=(0044)https://tcja.github.io/jQuery-confirm-modal/ -->
+<html lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+	<link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script src="js/jquery.confirmModal.js"></script>
+
+<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>jQuery confirm modal | jQuery-confirm-modal</title>
+<meta name="generator" content="Jekyll v3.8.5">
+<meta property="og:title" content="jQuery confirm modal">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="Confirm box plugin for bootstrap 4">
+<meta property="og:description" content="Confirm box plugin for bootstrap 4">
+<link rel="canonical" href="https://tcja.github.io/jQuery-confirm-modal/">
+<meta property="og:url" content="https://tcja.github.io/jQuery-confirm-modal/">
+<meta property="og:site_name" content="jQuery-confirm-modal">
+<script type="application/ld+json">
+{"@type":"WebSite","url":"https://tcja.github.io/jQuery-confirm-modal/","name":"jQuery-confirm-modal","headline":"jQuery confirm modal","description":"Confirm box plugin for bootstrap 4","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+
+  <body>		
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/tcja/jQuery-confirm-modal">View on GitHub</a>
+
+          <h1 id="project_title">jQuery-confirm-modal</h1>
+          <h2 id="project_tagline">Confirm box plugin for bootstrap 4</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1 id="jquery-confirm-modal">jQuery confirm modal</h1>
+
+<p>This plugin replaces the default javascript confirm box by using bootstrap’s 4 modal component.</p>
+
+<h2 id="dependencies">Dependencies</h2>
+
+<h4 style="font-size: 1rem;" id="bootstrap-4xx-both-css-and-js"><em>bootstrap 4.xx (both css and js)</em></h4>
+<h4 style="font-size: 1rem;" class="mb-3" id="jquery-3xx"><em>jquery 3.xx</em></h4>
+
+<h2 id="how-to-install">How to install</h2>
+<p>Add the following code for the dependencies in your <code class="highlighter-rouge">HEAD</code> tag :</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"</span> <span class="na">integrity=</span><span class="s">"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://code.jquery.com/jquery-3.4.1.min.js"</span> <span class="na">integrity=</span><span class="s">"sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"</span> <span class="na">integrity=</span><span class="s">"sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"</span> <span class="na">crossorigin=</span><span class="s">"anonymous"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre></div></div>
+<p>then add the plugin :</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"jquery.confirmModal.min.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<h2 id="fire-the-plugin">Fire the plugin</h2>
+
+<p>We need to make sure that the DOM is ready before we implement the plugin, in this example we use the click event method that jQuery provides.</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+  <span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>         
+    <span class="nx">$</span><span class="p">(</span><span class="s1">'.confirmModal'</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>              
+      <span class="nx">$</span><span class="p">.</span><span class="nx">confirmModal</span><span class="p">(</span><span class="s1">'Are you sure you want to do this?'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">el</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="s1">'OK was clicked!'</span><span class="p">);</span>
+        <span class="c1">//do something...</span>
+      <span class="p">});</span>
+    <span class="p">});</span>          
+  <span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+<p>The <strong>first parameter</strong> is the <em>message</em> we want to display, the <strong>second parameter (optional)</strong> provides <em>custom options for a specific modal</em> and <strong>the third one</strong> is the <em>callback function</em> with the current clicked element passed as a parameter (in this case the element being <code class="highlighter-rouge">&lt;a href="" class="confirmModal"&gt;click&lt;/a&gt;</code>).</p>
+
+<script type="text/javascript">
+	$(function() {    
+		$('.confirmModal').click(function(e) {
+      e.preventDefault();
+      if ($defaultsConfirmModal !== undefined) {
+        var copy = $defaultsConfirmModal;
+        $defaultsConfirmModal = {
+            confirmButton: 'OK',
+            cancelButton: 'Cancel',
+            messageHeader: '&nbsp;',
+            modalBoxWidth: 'auto',
+            modalVerticalCenter: false,
+            fadeAnimation: false,
+            backgroundBlur: false,
+            autoFocusOnConfirmBtn: false
+        };
+      }
+			$.confirmModal('Are you sure you want to do this?', function(el) {        
+				alert('OK was clicked!');
+				//do something...
+      });
+      $defaultsConfirmModal = copy;
+		});
+	});
+</script>
+
+<a href="javascript:;" class="confirmModal">Click on this exemple</a><br><br>
+
+<p>By default, the plugin is set with the following options :</p>
+<ul>
+  <li>The default locale is english</li>
+  <li>There is no header text above the message displayed =&gt; <code class="highlighter-rouge">messageHeader: '&amp;nbsp;'</code></li>
+  <li>The modal’s width is automatically sized according to the message displayed =&gt; <code class="highlighter-rouge">modalBoxWidth: 'auto'</code></li>
+  <li>The modal displays instantly without any fade animation =&gt; <code class="highlighter-rouge">fadeAnimation: false</code></li>
+  <li>The modal displays on the top of the page =&gt; <code class="highlighter-rouge">modalVerticalCenter: false</code></li>
+  <li>The background is dark when the modal is displayed (bootstrap 4 default modal background) =&gt; <code class="highlighter-rouge">backgroundBlur: false</code></li>
+  <li>There is no auto-focus on the “OK” button =&gt; <code class="highlighter-rouge">autoFocusOnConfirmBtn: false</code></li>
+</ul>
+<p>but you can change all those options by two ways, the first one by setting a global default behavior and the second one by specifying a custom behavior for a specific modal (if set alongside global defaults, they will overwrite them), the global variable for the default options is the following : <code class="highlighter-rouge">$defaultsConfirmModal</code>, here is an example of the list of all the options you can change :</p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//$defaultsConfirmModal sets a global default behavior for all confirm modals</span>
+<span class="nx">$defaultsConfirmModal</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">confirmButton</span><span class="p">:</span> <span class="s1">'Confirm'</span><span class="p">,</span> <span class="c1">//changes the confirm button locale</span>
+  <span class="na">cancelButton</span><span class="p">:</span> <span class="s1">'Cancel'</span><span class="p">,</span> <span class="c1">//changes the cancel button locale</span>
+  <span class="na">messageHeader</span><span class="p">:</span> <span class="s1">'Call to action'</span><span class="p">,</span> <span class="c1">//any text you want to display above the main message</span>
+  <span class="na">modalBoxWidth</span><span class="p">:</span> <span class="s1">'365px'</span><span class="p">,</span> <span class="c1">//set a fixed width in px/rem/em</span>
+  <span class="na">modalVerticalCenter</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="c1">//the modal will be vertically aligned</span>
+  <span class="na">fadeAnimation</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="c1">//the modal will have a fade in and fade out animation</span>
+  <span class="na">backgroundBlur</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="c1">//if set to true : the plugin assumes that the content of your website</span>
+                        <span class="c1">//is wrapped in a div with the class name "container" and applies a blur of 0.1rem,</span>
+                        <span class="c1">//if you don't use such a wrapper or the wrapper has another name, you can pass an array</span>
+                        <span class="c1">//with your own selectors that you wish to blur and also set your own blur weight in px/rem (optional)</span>
+                        <span class="c1">//like that : ['#header, #content, #footer', '3px']</span>
+  <span class="na">autoFocusOnConfirmBtn</span><span class="p">:</span> <span class="kc">true</span> <span class="c1">//when the modal is displayed, there will be an auto-focus on the "OK"button</span>
+                              <span class="c1">//so the user can press enter instead of clicking on the button</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>An example speaks better for itself :</p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span><span class="nt">&gt;</span>
+  <span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">//Let's say we want by default all modals to have french locale, to not display</span>
+    <span class="c1">//any header text, we want a fixed width of 500px, we want the fade animation</span>
+    <span class="c1">//and we want the auto-focus on the "confirm" button</span>
+    <span class="nx">$defaultsConfirmModal</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">confirmButton</span><span class="p">:</span> <span class="s1">'Confirmer'</span><span class="p">,</span>
+      <span class="na">cancelButton</span><span class="p">:</span> <span class="s1">'Annuler'</span><span class="p">,</span>
+      <span class="na">modalBoxWidth</span><span class="p">:</span> <span class="s1">'500px'</span><span class="p">,</span>
+      <span class="na">fadeAnimation</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="na">autoFocusOnConfirmBtn</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">};</span><br>
+    <span class="nx">$</span><span class="p">(</span><span class="s1">'.anotherConfirmModal'</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+      <span class="c1">//Now, we want to change the default behavior we set earlier but just for this specific modal, </span>
+      <span class="c1">//we'll set a text header, we don't want the auto-focus on the button, we'll center the modal vertically and we want to blur</span>
+      <span class="c1">//the background, as stated previously those new values will overwrite the default ones set with $defaultsConfirmModal variable</span>
+      <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="na">messageHeader</span><span class="p">:</span> <span class="s1">'Call to action'</span><span class="p">,</span>
+        <span class="na">modalVerticalCenter</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">backgroundBlur<span class="p">:</span> [<span class="s1"><span class="s1">'#header_wrap, #main_content_wrap, #footer_wrap'</span></span>]<span class="p">,</span></span>
+        <span class="na">autoFocusOnConfirmBtn</span><span class="p">:</span> <span class="kc">false</span>
+      <span class="p">};</span>
+      <span class="nx">$</span><span class="p">.</span><span class="nx">confirmModal</span><span class="p">(</span><span class="s1">'Are you sure you want to do this?'</span><span class="p">,</span> <span class="nx">options</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">el</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="s1">'Yay!! You confirmed!'</span><span class="p">);</span>
+        <span class="c1">//do something...</span>
+      <span class="p">});</span>
+    <span class="p">});</span>
+  
+    <span class="nx">$</span><span class="p">(</span><span class="s1">'.yetAnotherConfirmModal'</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+      <span class="c1">//Here we don't specify any custom options so the default values from $defaultsConfirmModal will apply,</span>
+      <span class="c1">//if there is no $defaultsConfirmModal variable then the plugin's default values will apply</span>
+      <span class="nx">$</span><span class="p">.</span><span class="nx">confirmModal</span><span class="p">(</span><span class="s1">'Are you really sure you want to do this?'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">el</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="s1">'Gratz, You confirmed!'</span><span class="p">);</span>
+        <span class="c1">//do something...</span>
+      <span class="p">});</span>
+    <span class="p">});</span>
+  <span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<script type="text/javascript">
+  $(function() {
+    //Let's say we want by default all modals to have french locale, to not display
+    //any header text, we want a fixed width of 500px, we want the fade animation
+    //and we want the auto-focus on the "confirm" button
+    $defaultsConfirmModal = {
+      confirmButton: 'Confirmer',
+      cancelButton: 'Annuler',
+      modalBoxWidth: '500px',
+      fadeAnimation: true,
+      autoFocusOnConfirmBtn: true
+    };
+
+    $('.anotherConfirmModal').click(function(e) {
+      e.preventDefault();
+      //Now, we want to change the default behavior we set earlier but just for this specific modal, 
+      //we'll set a text header, we don't want the auto-focus on the button, we'll center the modal vertically and we want to blur
+      //the background, as stated previously those new values will overwrite the default ones set with $defaultsConfirmModal variable
+      var options = {
+        messageHeader: 'Call to action',
+        modalVerticalCenter: true,
+        backgroundBlur: ['#header_wrap, #main_content_wrap, #footer_wrap'],
+        autoFocusOnConfirmBtn: false
+      };
+      $.confirmModal('Are you sure you want to do this?', options, function(el) {
+        alert('Yay!! You confirmed!');
+        //do something...
+      });
+    });
+  
+    $('.yetAnotherConfirmModal').click(function(e) {
+      e.preventDefault();
+      //Here we don't specify any custom options so the default values from $defaultsConfirmModal will apply,
+      //if there is no $defaultsConfirmModal variable then the plugin's default values will apply
+      $.confirmModal('Are you really sure you want to do this?', function(el) {
+        alert('Gratz, You confirmed!');
+        //do something...
+      });
+    });
+  });
+</script>
+<p>Click on those examples to see the result :<br>
+<a href="javascript:;" class="anotherConfirmModal">anotherConfirmModal</a> // <a href="javascript:;" class="yetAnotherConfirmModal">yetAnotherConfirmModal</a></p>
+
+
+
+<h2 id="license">License</h2>
+
+<p>Released under the <strong>MIT License</strong></p>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">jQuery-confirm-modal maintained by <a href="https://github.com/tcja">tcja</a></p>
+        
+        <p>Published with <a href="https://pages.github.com/">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+  
+
+</body></html>
