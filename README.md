@@ -1,6 +1,6 @@
 # jQuery confirm modal
 
-This plugin replaces the default javascript confirm box by using bootstrap's 4 modal component. Demo available [here.](https://tcja.github.io/jquery-confirm-modal/)
+This plugin replaces the default javascript confirm box by using bootstrap's 4 modal component. Demo available [here.](https://tcja.github.io/jQuery-confirm-modal/)
 
 ## Dependencies
 
