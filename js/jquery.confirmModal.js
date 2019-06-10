@@ -1,6 +1,6 @@
 /*!
- * jQuery.confirmModal v1.0
- * Copyright (c) 2018 Trim C.
+ * jQuery.confirmModal v1.1
+ * Copyright (c) 2018-2019 Trim C.
  * Released under the MIT license
  * Description : simple to use plugin replacing the browser's default confirm box with bootstrap 4 modal
  */
@@ -25,7 +25,7 @@
                 var confirmButton = $defaultsConfirmModal.confirmButton;
             }
             if ($defaultsConfirmModal.cancelButton === undefined) {
-                var cancelButton = 'Cancel'; 
+                var cancelButton = 'Cancel';
             } else {
                 var cancelButton = $defaultsConfirmModal.cancelButton;
             }
@@ -50,23 +50,41 @@
                 var fadeAnimation = 'fade';
             }
             if (settings.backgroundBlur === true) {
-                $('.container').attr('style', '-webkit-filter: blur(0.1rem); -moz-filter: blur(0.1rem);	-o-filter: blur(0.1rem); -ms-filter: blur(0.1rem); filter: blur(0.1rem);');
-                $(document).one('hide.bs.modal', '.modalConfirm', function () { $('.container').removeAttr('style'); });
+                if ($('#cmStyle').length === 0) {
+                    $('head').append('<style id=cmStyle>.cmBackgroundBlur{-webkit-filter:blur(0.1rem);-moz-filter:blur(0.1rem);-o-filter:blur(0.1rem);-ms-filter:blur(0.1rem);filter:blur(0.1rem)}</style>');
+                } else if ($('#cmStyle').html() != '.cmBackgroundBlur{-webkit-filter:blur(0.1rem);-moz-filter:blur(0.1rem);-o-filter:blur(0.1rem);-ms-filter:blur(0.1rem);filter:blur(0.1rem)}') {
+                    $('#cmStyle').html('.cmBackgroundBlur{-webkit-filter:blur(0.1rem);-moz-filter:blur(0.1rem);-o-filter:blur(0.1rem);-ms-filter:blur(0.1rem);filter:blur(0.1rem)}');
+                }
+                $('.container').addClass('cmBackgroundBlur');
+                $(document).one('hide.bs.modal', '.modalConfirm', function () { $('.container').removeClass('cmBackgroundBlur'); });
             } else if (typeof(settings.backgroundBlur) === 'object') {
-                if (settings.backgroundBlur.length === 2) {
-                    var blurSize = settings.backgroundBlur[1];
+                var findBlurWeight = settings.backgroundBlur.findIndex(function(el) { return /(^[0-9]+px|rem$)/i.test(el); });
+                if (findBlurWeight >= 0) {
+                    if (findBlurWeight == 0) {
+                        var elements = '.container';
+                        var blurSize = settings.backgroundBlur[0];
+                    } else {
+                        var elements = settings.backgroundBlur[0];
+                        var blurSize = settings.backgroundBlur[1];
+                    }
                 } else {
+                    var elements = settings.backgroundBlur[0];
                     var blurSize = '0.1rem';
                 }
-                var elements = settings.backgroundBlur[0];                
-                $(elements).attr('style', '-webkit-filter: blur(' + blurSize + '); -moz-filter: blur(' + blurSize + '); -o-filter: blur(' + blurSize + '); -ms-filter: blur(' + blurSize + '); filter: blur(' + blurSize + ');');
-                $(document).one('hide.bs.modal', '.modalConfirm', function () { $(elements).removeAttr('style'); });
+
+                if ($('#cmStyle').length === 0) {
+                    $('head').append('<style id=cmStyle>.cmBackgroundBlur{-webkit-filter:blur(' + blurSize + ');-moz-filter:blur(' + blurSize + ');-o-filter:blur(' + blurSize + ');-ms-filter:blur(' + blurSize + ');filter:blur(' + blurSize + ')}</style>');
+                } else if ($('#cmStyle').html() != '.cmBackgroundBlur{-webkit-filter:blur(' + blurSize + ');-moz-filter:blur(' + blurSize + ');-o-filter:blur(' + blurSize + ');-ms-filter:blur(' + blurSize + ');filter:blur(' + blurSize + ')}') {
+                    $('#cmStyle').html('.cmBackgroundBlur{-webkit-filter:blur(' + blurSize + ');-moz-filter:blur(' + blurSize + ');-o-filter:blur(' + blurSize + ');-ms-filter:blur(' + blurSize + ');filter:blur(' + blurSize + ')}');
+                }
+                $(elements).addClass('cmBackgroundBlur');
+                $(document).one('hide.bs.modal', '.modalConfirm', function () { $(elements).removeClass('cmBackgroundBlur'); });
             }
             if (settings.autoFocusOnConfirmBtn === true) {
                 $(document).one('shown.bs.modal', '.modalConfirm', function () { $('.confirmButton').focus(); });
             }
         }
-        
+
         var html = `
             <div style="z-index: 5000;" class="modal ` + fadeAnimation + ` modalConfirm" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
                 <div style="max-width: ` + modalBoxWidth + `;" class="modal-dialog ` + modalVerticalCenter + `" role="document">
