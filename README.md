@@ -36,7 +36,7 @@ We need to make sure that the DOM is ready before we implement the plugin, in th
   });
 </script>
 ```
-The **first parameter** is the *message* we want to display, the **second parameter (optional)** provides *custom options for a specific modal* and **the third one** is the *callback function* with the current clicked element passed as an argument (in this case the element being `<a href="" class="confirmModal">click</a>`).
+The **first argument** is the *message* we want to display, the **second argument (optional)** provides *custom options for a specific modal* and **the third one** is the *callback function* with the current clicked element passed as an argument (in this case the element being `<a href="" class="confirmModal">click</a>`).
 
 By default, the plugin is set with the following options : 
 * The default locale is english
