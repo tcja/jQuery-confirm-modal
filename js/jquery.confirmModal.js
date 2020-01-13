@@ -19,15 +19,15 @@
             var confirmButton = 'OK';
             var cancelButton = 'Cancel';
         } else {
-            if ($defaultsConfirmModal.confirmButton === undefined) {
+            if (settings.confirmButton === undefined) {
                 var confirmButton = 'OK';
             } else {
-                var confirmButton = $defaultsConfirmModal.confirmButton;
+                var confirmButton = settings.confirmButton;
             }
-            if ($defaultsConfirmModal.cancelButton === undefined) {
+            if (settings.cancelButton === undefined) {
                 var cancelButton = 'Cancel';
             } else {
-                var cancelButton = $defaultsConfirmModal.cancelButton;
+                var cancelButton = settings.cancelButton;
             }
             if (settings.modalBoxWidth === undefined) {
                 var modalBoxWidth = 'auto';
